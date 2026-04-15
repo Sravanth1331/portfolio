@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sravanth Thatavarthi | AI Engineer Portfolio</title>
+<meta name="description" content="AI Engineer with 4+ years building production LLM-powered microservices, RAG architectures, and multi-channel AI communication systems." />
+<meta property="og:title" content="Sravanth Thatavarthi | AI Engineer Portfolio" />
+<meta property="og:description" content="Building production AI systems that automate operations and serve enterprise clients at scale." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', 'Segoe UI', sans-serif; color: #1e293b; background: #fafbfc; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; }
+  .mono { font-family: 'Space Mono', monospace; }
+
+  /* NAV */
+  .nav-dots { position: fixed; right: 18px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 14px; }
+  .nav-dot { width: 11px; height: 11px; border-radius: 50%; border: 2px solid #94a3b8; background: transparent; cursor: pointer; transition: all 0.3s; position: relative; }
+  .nav-dot.active { border-color: #0e7c6b; background: #0e7c6b; }
+  .nav-dot:hover::after { opacity: 1; }
+  .nav-dot::after { content: attr(data-label); position: absolute; right: 22px; top: -4px; background: #1e293b; color: #e2e8f0; padding: 3px 10px; border-radius: 4px; font-size: 11px; white-space: nowrap; opacity: 0; transition: opacity 0.2s; pointer-events: none; font-family: 'DM Sans', sans-serif; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); position: relative; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; opacity: 0.04; background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0); background-size: 40px 40px; }
+  .hero-glow-1 { position: absolute; top: 10%; left: 5%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(14,124,107,0.15), transparent 70%); border-radius: 50%; filter: blur(60px); }
+  .hero-glow-2 { position: absolute; bottom: 15%; right: 10%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(59,130,246,0.1), transparent 70%); border-radius: 50%; filter: blur(50px); }
+  .hero-content { text-align: center; z-index: 1; padding: 0 24px; max-width: 800px; }
+  .hero-label { font-size: 13px; color: #0e7c6b; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; }
+  .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 700; color: #f1f5f9; line-height: 1.1; margin-bottom: 20px; }
+  .hero p { font-size: clamp(16px, 2.5vw, 20px); color: #94a3b8; max-width: 600px; margin: 0 auto 32px; line-height: 1.6; }
+  .btn-primary { padding: 12px 28px; background: #0e7c6b; color: #fff; border-radius: 8px; font-size: 14px; font-weight: 600; display: inline-block; transition: transform 0.2s, box-shadow 0.2s; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,124,107,0.3); }
+  .btn-outline { padding: 12px 28px; border: 1px solid #475569; color: #e2e8f0; border-radius: 8px; font-size: 14px; font-weight: 500; display: inline-block; transition: border-color 0.2s; }
+  .btn-outline:hover { border-color: #94a3b8; }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* SECTIONS */
+  .section { padding: 80px 24px; max-width: 920px; margin: 0 auto; }
+  .section-label { font-size: 12px; color: #0e7c6b; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+  .section-full { padding: 80px 24px; }
+
+  /* TECH TAG */
+  .tag { display: inline-block; padding: 3px 10px; margin: 2px 4px 2px 0; background: rgba(14,124,107,0.08); color: #0e7c6b; border-radius: 4px; font-size: 12px; font-weight: 500; border: 1px solid rgba(14,124,107,0.15); }
+  .tag-dark { background: rgba(14,124,107,0.08); color: #5eead4; border: 1px solid rgba(14,124,107,0.2); font-size: 11px; padding: 3px 10px; }
+
+  /* SKILLS GRID */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+  .skill-card { background: #fff; border-radius: 10px; padding: 20px; border: 1px solid #e2e8f0; }
+  .skill-card h4 { font-weight: 700; font-size: 13px; color: #0e7c6b; margin-bottom: 10px; }
+
+  /* FEATURED */
+  .featured { background: #0f172a; }
+  .featured-inner { max-width: 920px; margin: 0 auto; }
+  .featured h3 { font-size: clamp(24px, 4vw, 36px); color: #f1f5f9; font-weight: 700; margin-bottom: 8px; }
+  .featured-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; flex-wrap: wrap; }
+  .live-badge { padding: 4px 14px; background: rgba(14,124,107,0.15); color: #0e7c6b; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid rgba(14,124,107,0.3); }
+
+  /* ARCH DIAGRAM */
+  .arch-box { background: linear-gradient(135deg, #1e293b, #0f172a); border-radius: 12px; border: 1px solid #334155; padding: 32px; margin-bottom: 32px; }
+  .arch-flow { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
+  .arch-node { background: rgba(14,124,107,0.1); border: 1px solid rgba(14,124,107,0.3); border-radius: 6px; padding: 8px 14px; color: #e2e8f0; font-size: 12px; font-weight: 500; }
+  .arch-arrow { color: #0e7c6b; font-size: 18px; }
+  .channels { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .channel { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 4px; padding: 4px 10px; color: #93c5fd; font-size: 11px; }
+
+  /* METRICS */
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .metric-card { background: rgba(14,124,107,0.06); border: 1px solid rgba(14,124,107,0.2); border-radius: 10px; padding: 20px 16px; text-align: center; }
+  .metric-val { font-size: 28px; font-weight: 700; color: #0e7c6b; }
+  .metric-label { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 28px; }
+  .exp-card { background: #fff; border-radius: 12px; padding: 28px; border: 1px solid #e2e8f0; }
+  .exp-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+  .exp-card h3 { font-size: 18px; font-weight: 700; }
+  .exp-period { font-size: 13px; color: #64748b; }
+  .exp-meta { font-size: 14px; color: #64748b; margin-bottom: 12px; }
+  .exp-desc { font-size: 14px; color: #475569; margin-bottom: 12px; line-height: 1.5; }
+  .exp-list ul { list-style: none; padding: 0; }
+  .exp-list li { font-size: 13px; color: #334155; line-height: 1.6; margin-bottom: 6px; padding-left: 18px; position: relative; }
+  .exp-list li::before { content: '▸'; position: absolute; left: 0; font-weight: 700; }
+
+  /* RESEARCH */
+  .research-section { background: #f1f5f9; }
+  .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .research-card { background: #fff; border-radius: 12px; padding: 24px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; }
+  .research-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
+  .research-card p { font-size: 13px; color: #475569; line-height: 1.6; flex: 1; }
+  .result-tag { padding: 4px 10px; background: rgba(14,124,107,0.08); color: #0e7c6b; border-radius: 4px; font-size: 12px; font-weight: 600; display: inline-block; margin: 2px 4px 2px 0; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .edu-card { background: #fff; border-radius: 12px; padding: 24px; border: 1px solid #e2e8f0; }
+  .edu-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .cert-item { padding: 10px 14px; margin-bottom: 8px; background: rgba(14,124,107,0.04); border-radius: 8px; font-size: 14px; font-weight: 500; border-left: 3px solid #0e7c6b; }
+
+  /* CONTACT */
+  .contact { background: linear-gradient(135deg, #0f172a, #1e293b); text-align: center; }
+  .contact h3 { font-size: 28px; color: #f1f5f9; font-weight: 700; margin-bottom: 24px; }
+  .contact-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+  .contact-sub { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .contact-sub a, .contact-sub span { color: #94a3b8; font-size: 13px; }
+  .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid #334155; color: #475569; font-size: 12px; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-in { animation: fadeUp 0.6s ease-out forwards; }
+  .delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .delay-2 { animation-delay: 0.2s; opacity: 0; }
+  .delay-3 { animation-delay: 0.3s; opacity: 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .edu-grid { grid-template-columns: 1fr; }
+    .nav-dots { display: none; }
+    .hero h1 { font-size: 32px; }
+    .section { padding: 48px 16px; }
+    .section-full { padding: 48px 16px; }
+    .arch-flow { gap: 4px; }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="navDots">
+  <button class="nav-dot active" data-label="Home" onclick="scrollToSection('hero')"></button>
+  <button class="nav-dot" data-label="About" onclick="scrollToSection('about')"></button>
+  <button class="nav-dot" data-label="Featured" onclick="scrollToSection('featured')"></button>
+  <button class="nav-dot" data-label="Experience" onclick="scrollToSection('experience')"></button>
+  <button class="nav-dot" data-label="Research" onclick="scrollToSection('research')"></button>
+  <button class="nav-dot" data-label="Education" onclick="scrollToSection('education')"></button>
+  <button class="nav-dot" data-label="Contact" onclick="scrollToSection('contact')"></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="mono hero-label animate-in">AI Engineer &bull; Portfolio</div>
+    <h1 class="animate-in delay-1">Sravanth Thatavarthi</h1>
+    <p class="animate-in delay-2">Building production AI systems that automate operations and serve enterprise clients at scale</p>
+    <div class="hero-btns animate-in delay-3">
+      <a href="https://letquickly.ai" target="_blank" class="btn-primary">View Live Product &rarr; letquickly.ai</a>
+      <a href="https://linkedin.com/in/sravanth13" target="_blank" class="btn-outline">LinkedIn Profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="mono section-label">About Me</div>
+  <p style="font-size:18px;line-height:1.7;color:#334155;margin-bottom:32px;">AI Engineer with 4+ years of production experience architecting LLM-powered microservices, multi-channel AI communication systems, and enterprise RAG pipelines across property management, fraud detection, and healthcare domains. Hands-on expertise in voice agents (Amazon Polly/SSML), embedding pipelines, vector retrieval, GPU-accelerated ML, and multi-tenant platform design. Proven track record shipping AI systems that reduce manual workloads by 40&ndash;60% and serve 10+ enterprise clients in production.</p>
+  <div class="skills-grid">
+    <div class="skill-card"><h4 class="mono">LLM &amp; RAG</h4><div>
+      <span class="tag">OpenAI</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">Qdrant</span><span class="tag">FAISS</span><span class="tag">RAG</span><span class="tag">Hybrid Retrieval</span><span class="tag">RAGAS</span><span class="tag">Prompt Engineering</span>
+    </div></div>
+    <div class="skill-card"><h4 class="mono">AI / ML</h4><div>
+      <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Scikit-learn</span><span class="tag">CUDA</span><span class="tag">NLP</span><span class="tag">Deep Learning</span><span class="tag">CNN</span><span class="tag">RNN</span><span class="tag">LSTM</span><span class="tag">MLflow</span>
+    </div></div>
+    <div class="skill-card"><h4 class="mono">Backend &amp; Data</h4><div>
+      <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">REST APIs</span><span class="tag">Docker</span><span class="tag">SQL</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Spark</span><span class="tag">ETL</span><span class="tag">Pydantic</span>
+    </div></div>
+    <div class="skill-card"><h4 class="mono">Cloud &amp; Tools</h4><div>
+      <span class="tag">AWS</span><span class="tag">Azure AI</span><span class="tag">GCP</span><span class="tag">Amazon Polly</span><span class="tag">SSML</span><span class="tag">Kubernetes</span><span class="tag">CI/CD</span><span class="tag">Git</span><span class="tag">Tableau</span><span class="tag">Power BI</span>
+    </div></div>
+  </div>
+</section>
+
+<!-- FEATURED PROJECT -->
+<section class="section-full featured" id="featured">
+  <div class="featured-inner">
+    <div class="mono section-label">Featured Project</div>
+    <h3>Multi-Channel AI Communication Platform</h3>
+    <div class="featured-meta">
+      <span style="color:#94a3b8;font-size:14px;">LetQuickly &bull; Generative AI Engineer</span>
+      <a href="https://letquickly.ai" target="_blank" class="live-badge">&#x1F517; Live at letquickly.ai</a>
+    </div>
+
+    <div class="arch-box">
+      <div class="mono" style="font-size:11px;color:#64748b;margin-bottom:16px;">SYSTEM ARCHITECTURE</div>
+      <div class="arch-flow">
+        <div class="arch-node">Tenant Query</div><span class="arch-arrow">&rarr;</span>
+        <div class="arch-node">Channel Router</div><span class="arch-arrow">&rarr;</span>
+        <div class="arch-node">Intent Classification</div><span class="arch-arrow">&rarr;</span>
+        <div class="arch-node">RAG Pipeline</div><span class="arch-arrow">&rarr;</span>
+        <div class="arch-node">LangGraph Agent</div><span class="arch-arrow">&rarr;</span>
+        <div class="arch-node">Response + Citation</div><span class="arch-arrow">&rarr;</span>
+        <div class="arch-node">Channel Delivery</div>
+      </div>
+      <div class="channels">
+        <div class="channel">Voice (Polly/SSML)</div>
+        <div class="channel">SMS (Twilio)</div>
+        <div class="channel">Email (LLM Triage)</div>
+        <div class="channel">WhatsApp API</div>
+        <div class="channel">Live Chat</div>
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card"><div class="metric-val mono">~40%</div><div class="metric-label">Reduction in live agent calls</div></div>
+      <div class="metric-card"><div class="metric-val mono">&lt;30s</div><div class="metric-label">Avg tenant response time</div></div>
+      <div class="metric-card"><div class="metric-val mono">~60%</div><div class="metric-label">Less manual email handling</div></div>
+      <div class="metric-card"><div class="metric-val mono">10+</div><div class="metric-label">Enterprise clients served</div></div>
+      <div class="metric-card"><div class="metric-val mono">3x</div><div class="metric-label">Higher open rates (SMS/WA)</div></div>
+      <div class="metric-card"><div class="metric-val mono">&gt;85%</div><div class="metric-label">RAGAS quality score</div></div>
+    </div>
+
+    <div>
+      <span class="tag-dark">Python</span><span class="tag-dark">FastAPI</span><span class="tag-dark">LangChain</span><span class="tag-dark">LangGraph</span><span class="tag-dark">OpenAI</span><span class="tag-dark">Amazon Polly</span><span class="tag-dark">SSML</span><span class="tag-dark">Qdrant</span><span class="tag-dark">Docker</span><span class="tag-dark">AWS</span><span class="tag-dark">WhatsApp API</span><span class="tag-dark">Twilio</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="mono section-label" style="margin-bottom:32px;">Experience</div>
+  <div class="exp-list">
+
+    <div class="exp-card" style="border-left: 4px solid #0e7c6b;">
+      <div class="exp-header"><h3>Generative AI Engineer</h3><span class="exp-period mono">Oct 2025 &ndash; Present</span></div>
+      <div class="exp-meta">LetQuickly &bull; Illinois, US <a href="https://letquickly.ai" target="_blank" style="margin-left:8px;color:#0e7c6b;font-size:12px;">&#x1F517; Live</a></div>
+      <p class="exp-desc">Building the AI brain behind Leqa &mdash; the AI assistant powering all tenant communications across every channel for property management companies.</p>
+      <ul>
+        <li style="--c:#0e7c6b">Architected multi-channel AI communication system spanning Voice, SMS, Email, WhatsApp, and Live Chat &mdash; enabling 24/7 automated tenant engagement without human intervention</li>
+        <li>Built production voice agent using Amazon Polly + custom SSML with emotionally reactive dialogue, reducing live agent call volume by ~40%</li>
+        <li>Engineered RAG pipelines with LangChain/LangGraph powering intelligent Q&amp;A across lease documents, maintenance requests, and property FAQs &mdash; cutting response time from hours to under 30 seconds</li>
+        <li>Designed multi-tenant microservices supporting 10+ property management clients with isolated data pipelines and configurable AI personas per client brand</li>
+        <li>Built LLM-based email triage and auto-response pipelines &mdash; classify, prioritize, draft replies &mdash; reducing manual email handling by ~60%</li>
+        <li>Integrated WhatsApp &amp; SMS automation achieving 3x higher open rates vs. traditional email workflows</li>
+        <li>Evaluated system performance using RAGAS metrics (faithfulness, context recall, answer relevancy), maintaining &gt;85% response quality</li>
+        <li>Delivered end-to-end client onboarding from AI configuration to live demo production across multiple property portfolios</li>
+      </ul>
+      <div style="margin-top:12px;"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">LangGraph</span><span class="tag">OpenAI</span><span class="tag">Amazon Polly</span><span class="tag">SSML</span><span class="tag">Qdrant</span><span class="tag">Docker</span><span class="tag">AWS</span></div>
+    </div>
+
+    <div class="exp-card" style="border-left: 4px solid #1a5276;">
+      <div class="exp-header"><h3>AI/ML Engineer</h3><span class="exp-period mono">Sep 2024 &ndash; Aug 2025</span></div>
+      <div class="exp-meta">KGS Technology Group &bull; Remote, US</div>
+      <p class="exp-desc">Built fraud detection models and analytics pipelines for financial services, processing 1.2M+ monthly transactions.</p>
+      <ul>
+        <li>Built and deployed fraud detection models using Python, SQL, and Scikit-learn &mdash; improving detection accuracy by 35%, reducing false positives by 28%</li>
+        <li>Conducted anomaly detection on 1.2M+ monthly financial transactions using time-series and clustering, uncovering 15% more hidden fraud</li>
+        <li>Developed real-time dashboards in Tableau/Power BI for compliance teams</li>
+        <li>Automated ETL pipelines reducing data preparation time by 40%</li>
+        <li>Partnered cross-functionally to strengthen fraud enforcement, supporting $2M in annual savings</li>
+      </ul>
+      <div style="margin-top:12px;"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">PyTorch</span><span class="tag">SQL</span><span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Spark</span><span class="tag">FAISS</span><span class="tag">AWS</span></div>
+    </div>
+
+    <div class="exp-card" style="border-left: 4px solid #522d80;">
+      <div class="exp-header"><h3>Teaching Assistant</h3><span class="exp-period mono">Aug &ndash; Dec 2023</span></div>
+      <div class="exp-meta">Clemson University &bull; Clemson, SC</div>
+      <ul>
+        <li>Mentored 120+ students on Python, SQL, and Java fundamentals, improving debugging accuracy by 30%</li>
+        <li>Guided capstone projects involving API integrations, SQL queries, and data wrangling &mdash; enabling 20% faster project delivery</li>
+        <li>Led workshops on data visualization and version control (Git)</li>
+      </ul>
+    </div>
+
+    <div class="exp-card" style="border-left: 4px solid #1a6e4e;">
+      <div class="exp-header"><h3>Machine Learning Engineer</h3><span class="exp-period mono">Aug 2020 &ndash; Oct 2021</span></div>
+      <div class="exp-meta">Medico Healthcare Services &bull; Hyderabad, India</div>
+      <ul>
+        <li>Processed 1M+ healthcare records across six datasets, resolving 98% of missing values with HIPAA compliance</li>
+        <li>Identified 10+ predictors for diabetes risk on 500K patient records used in early intervention models</li>
+        <li>Built automated clinical reports in Power BI across five departments</li>
+        <li>Collaborated with data governance teams to protect patient data integrity</li>
+      </ul>
+      <div style="margin-top:12px;"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">Scikit-learn</span><span class="tag">SQL</span><span class="tag">Power BI</span></div>
+    </div>
+
+    <div class="exp-card" style="border-left: 4px solid #8b4513;">
+      <div class="exp-header"><h3>Data Analyst &ndash; AI Chatbot Engineering</h3><span class="exp-period mono">May 2019 &ndash; Jun 2020</span></div>
+      <div class="exp-meta">Techimax &bull; Hyderabad, India</div>
+      <ul>
+        <li>Developed AI chatbot using Python and NLP-based intent classification &mdash; 95% response accuracy across 10,000+ queries</li>
+        <li>End-to-end pipeline: data cleaning &rarr; labeling &rarr; feature engineering &rarr; model training &rarr; evaluation</li>
+      </ul>
+      <div style="margin-top:12px;"><span class="tag">Python</span><span class="tag">NLP</span><span class="tag">ANN</span><span class="tag">Data Analysis</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section class="section-full research-section" id="research">
+  <div style="max-width:920px;margin:0 auto;">
+    <div class="mono section-label" style="margin-bottom:32px;">Research &amp; Academic Projects</div>
+    <div class="research-grid">
+
+      <div class="research-card">
+        <div class="mono" style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Literature Review &bull; Aug &ndash; Dec 2023</div>
+        <h4>HyperGEF: Efficient Fusion for Hypergraph Neural Networks on GPUs</h4>
+        <p>Reviewed and benchmarked a GPU-optimized framework for HyperGNNs featuring edge-split partitioning, fusion workload-aware formats, and shared memory-aware grouping.</p>
+        <div style="margin:10px 0;"><span class="result-tag">3.31&times; over cuSPARSE</span><span class="result-tag">2.25&ndash;3.99&times; over DGL/PyG</span></div>
+        <div><span class="tag">CUDA</span><span class="tag">GPU Programming</span><span class="tag">PyTorch</span><span class="tag">DGL</span><span class="tag">PyG</span><span class="tag">HPC</span></div>
+      </div>
+
+      <div class="research-card">
+        <div class="mono" style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Graduate Research &bull; Jan &ndash; May 2024</div>
+        <h4>Hearing Threshold Prediction using Brain MRI</h4>
+        <p>Built deep learning models (CNN, RNN, SVM) to predict hearing thresholds by analyzing brain MRI scans with advanced neural pattern analysis.</p>
+        <div style="margin-top:auto;padding-top:8px;"><span class="tag">TensorFlow</span><span class="tag">CNN</span><span class="tag">RNN</span><span class="tag">SVM</span><span class="tag">Medical Imaging</span></div>
+      </div>
+
+      <div class="research-card">
+        <div class="mono" style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Graduate Research &bull; Jan &ndash; May 2023</div>
+        <h4>Continuous Affect Recognition from Multimodal Video Signals</h4>
+        <p>Multi-modal LSTM architecture integrating visual (VGG-Face, OpenFace), audio, and text cues for human sentiment recognition.</p>
+        <div style="margin:10px 0;"><span class="result-tag">82.3% arousal accuracy</span><span class="result-tag">89% valence accuracy</span></div>
+        <div><span class="tag">LSTM</span><span class="tag">VGG-Face</span><span class="tag">OpenFace</span><span class="tag">Multi-Modal Fusion</span></div>
+      </div>
+
+      <div class="research-card">
+        <div class="mono" style="font-size:10px;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Undergraduate Research &bull; Jan &ndash; May 2022</div>
+        <h4>Cardiovascular Disease Prediction using ML</h4>
+        <p>Benchmarked Decision Tree, Logistic Regression, Naive Bayes, Random Forest, SVM, KNN, XGBoost, and neural networks for heart disease prediction.</p>
+        <div style="margin-top:auto;padding-top:8px;"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">XGBoost</span><span class="tag">Data Visualization</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="mono section-label" style="margin-bottom:24px;">Education &amp; Certifications</div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="mono" style="font-size:11px;color:#64748b;margin-bottom:8px;">Jan 2023 &ndash; May 2024</div>
+      <h4>M.S. Computer Science</h4>
+      <div style="font-size:14px;color:#475569;margin-bottom:12px;">Clemson University, Clemson, SC</div>
+      <div><span class="tag">Advanced ML</span><span class="tag">NLP</span><span class="tag">Deep Learning</span><span class="tag">Distributed Systems</span><span class="tag">GPU Programming &amp; HPC</span><span class="tag">Database Systems</span></div>
+    </div>
+    <div class="edu-card">
+      <div class="mono" style="font-size:11px;color:#64748b;margin-bottom:8px;">CERTIFICATIONS</div>
+      <div class="cert-item">&check; AWS Solutions Architect</div>
+      <div class="cert-item">&check; Google Data Analytics</div>
+      <div class="cert-item">&check; IBM Data Science</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-full contact" id="contact">
+  <div style="max-width:600px;margin:0 auto;">
+    <div class="mono section-label" style="margin-bottom:12px;">Get In Touch</div>
+    <h3>Let's build something together.</h3>
+    <div class="contact-links">
+      <a href="mailto:sravanththatavarthi@gmail.com" class="btn-primary">sravanththatavarthi@gmail.com</a>
+      <a href="https://linkedin.com/in/sravanth13" target="_blank" class="btn-outline">LinkedIn &rarr;</a>
+    </div>
+    <div class="contact-sub">
+      <a href="https://letquickly.ai" target="_blank">letquickly.ai &rarr;</a>
+      <span style="color:#475569">|</span>
+      <span>+1-864-765-6899</span>
+    </div>
+    <div class="footer">&copy; 2026 Sravanth Thatavarthi. Built with purpose.</div>
+  </div>
+</section>
+
+<script>
+// NAV DOT ACTIVE STATE
+const sections = ['hero','about','featured','experience','research','education','contact'];
+const dots = document.querySelectorAll('.nav-dot');
+
+function updateNav() {
+  let current = 'hero';
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const el = document.getElementById(sections[i]);
+    if (el && el.getBoundingClientRect().top < 300) {
+      current = sections[i];
+      break;
+    }
+  }
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', sections[i] === current);
+  });
+}
+
+window.addEventListener('scroll', updateNav);
+
+function scrollToSection(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+// SCROLL ANIMATIONS
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.exp-card, .skill-card, .research-card, .edu-card, .metric-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
